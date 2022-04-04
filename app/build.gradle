@@ -3,10 +3,17 @@ plugins {
     id 'kotlin-android'
 }
 
+// API KEY
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(rootProject.file("apikey.properties")))
+
 android {
     compileSdk 32
 
     defaultConfig {
+
+        buildConfigField("String", "WEATHER_API_KEY", apiKeyProperties['WEATHER_API_KEY'])
+
         applicationId "com.jasonazevedo.thunderstorm"
         minSdk 21
         targetSdk 32
