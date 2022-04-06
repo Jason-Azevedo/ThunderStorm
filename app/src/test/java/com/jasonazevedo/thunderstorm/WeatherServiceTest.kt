@@ -1,6 +1,6 @@
 package com.jasonazevedo.thunderstorm
 
-import com.jasonazevedo.thunderstorm.data.WeatherResponse
+import com.jasonazevedo.thunderstorm.model.WeatherResponse
 import com.jasonazevedo.thunderstorm.services.WeatherService
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert

@@ -1,14 +1,14 @@
 package com.jasonazevedo.thunderstorm.repositories
 
-import com.jasonazevedo.thunderstorm.data.WeatherResponse
-import com.jasonazevedo.thunderstorm.model.WeatherForecast
-import com.jasonazevedo.thunderstorm.services.WeatherAPI
+import com.jasonazevedo.thunderstorm.model.WeatherResponse
+import com.jasonazevedo.thunderstorm.model.DayForecast
+import com.jasonazevedo.thunderstorm.services.IWeatherAPI
 
 class WeatherForecastRepository(
     val database: Object,
-    val weatherAPI: WeatherAPI) : IRepository<WeatherForecast>{
+    val IWeatherAPI: IWeatherAPI) : IRepository<DayForecast>{
 
-    override fun getAll(): List<WeatherForecast> {
+    override fun getAll(): List<DayForecast> {
         throw NotImplementedError()
     }
 

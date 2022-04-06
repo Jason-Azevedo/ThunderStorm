@@ -1,6 +1,6 @@
 package com.jasonazevedo.thunderstorm.services
 
-import com.jasonazevedo.thunderstorm.data.WeatherResponse
+import com.jasonazevedo.thunderstorm.model.WeatherResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
@@ -21,15 +21,15 @@ class WeatherService {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val api = retrofit.create(WeatherAPI::class.java)
+        val api = retrofit.create(IWeatherAPI::class.java)
 
         // Could throw an IOException!
         return api.getDailyAndHourlyForecast(lat, lon, units)
     }
 
     object Units {
-        val METRIC = "metric"
-        val IMPERIAL = "imperial"
-        val STANDARD = "standard"
+        const val METRIC   = "metric"
+        const val IMPERIAL = "imperial"
+        const val STANDARD = "standard"
     }
 }

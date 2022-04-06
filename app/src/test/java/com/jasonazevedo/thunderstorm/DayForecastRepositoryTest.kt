@@ -1,15 +1,15 @@
 package com.jasonazevedo.thunderstorm
 
 import com.jasonazevedo.thunderstorm.repositories.WeatherForecastRepository
-import com.jasonazevedo.thunderstorm.services.WeatherAPI
+import com.jasonazevedo.thunderstorm.services.IWeatherAPI
 import org.junit.Test
 
 import org.junit.Before
 
-class WeatherForecastRepositoryTest {
+class DayForecastRepositoryTest {
 
     lateinit var repository: WeatherForecastRepository
-    lateinit var API: WeatherAPI
+    lateinit var API: IWeatherAPI
 
     @Before
     fun setup() {
