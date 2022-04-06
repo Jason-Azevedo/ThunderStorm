@@ -21,7 +21,11 @@ class WeatherServiceTest {
         var response: WeatherResponse?
 
         runBlocking {
-               response = weatherService.getDailyAndHourlyForecast(-33.977074, 22.457581)
+               response = weatherService
+                   .getDailyAndHourlyForecast(
+                       -33.977074,
+                       22.457581,
+                       WeatherService.Units.METRIC)
         }
 
         Assert.assertNotNull(response)

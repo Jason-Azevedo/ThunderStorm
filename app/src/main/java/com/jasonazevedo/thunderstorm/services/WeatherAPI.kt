@@ -12,9 +12,4 @@ interface WeatherAPI {
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
         @Query("units") units: String) : WeatherResponse
-
-    companion object {
-        val UNITS_METRIC = "metric"
-        val UNITS_IMPERIAL = "imperial"
-    }
 }
