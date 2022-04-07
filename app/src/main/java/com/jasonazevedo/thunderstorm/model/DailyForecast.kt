@@ -9,21 +9,22 @@ import com.google.gson.annotations.SerializedName
  * Represents a single days worth of weather forecast
  */
 @Entity
-class DailyForecast{
-    @PrimaryKey var id: Int = 0
-    @ColumnInfo(name = "sunrise_time") var sunriseTime: Long = 0
-    @ColumnInfo(name="sunset_time") var sunsetTime: Long = 0
-    @ColumnInfo(name="moon_phase") var moonPhase: Float = 0f
-    @ColumnInfo(name="min_temp") var minTemp: Float = 0f
-    @ColumnInfo(name="max_temp") var maxTemp: Float = 0f
-    @ColumnInfo(name="wind_speed") var windSpeed: Float = 0f
-    @ColumnInfo(name="wind_direction") var windDirection: Int = 0
+data class DailyForecast(
+    @PrimaryKey var id: Int,
+    @ColumnInfo(name="forecasted_time") var date: String?,
+    @ColumnInfo(name ="sunrise_time") var sunriseTime: Long?,
+    @ColumnInfo(name="sunset_time") var sunsetTime: Long?,
+    @ColumnInfo(name="moon_phase") var moonPhase: Float?,
+    @ColumnInfo(name="min_temp") var minTemp: Float?,
+    @ColumnInfo(name="max_temp") var maxTemp: Float?,
+    @ColumnInfo(name="wind_speed") var windSpeed: Float?,
+    @ColumnInfo(name="wind_direction") var windDirection: Int?,
 
     /** Probability of precipitation */
-    @ColumnInfo(name="pop") var pop: Float = 0f
+    @ColumnInfo(name="pop") var pop: Float?,
 
-    @ColumnInfo(name="humidity") var humidity: Int = 0
-    @ColumnInfo(name="uv_index") var uvIndex: Int = 0
-    @ColumnInfo(name="weather_type") var weatherType: String = ""
-    @ColumnInfo(name="weather_description") var weatherDescription: String = ""
-}
+    @ColumnInfo(name="humidity") var humidity: Int?,
+    @ColumnInfo(name="uv_index") var uvIndex: Int?,
+    @ColumnInfo(name="weather_type") var weatherType: String?,
+    @ColumnInfo(name="weather_description") var weatherDescription: String?
+)
