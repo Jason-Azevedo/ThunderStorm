@@ -7,10 +7,9 @@ import androidx.room.PrimaryKey
 /**
  * Represents a single hour's worth of weather forecast
  */
-@Entity
+@Entity(tableName="hourlyForecast", primaryKeys = ["forecasted_time"])
 data class HourlyForecast(
-    @PrimaryKey var id: Int,
-    @ColumnInfo(name="forecasted_time") var dateTime: String?,
+    @ColumnInfo(name="forecasted_time") var dateTime: Long,
     @ColumnInfo(name="temp") var temp: Float?,
     @ColumnInfo(name="feels_like_temp") var feelsLike: Float?,
     @ColumnInfo(name="wind_speed") var windSpeed: Float?,

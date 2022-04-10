@@ -8,10 +8,9 @@ import com.google.gson.annotations.SerializedName
 /**
  * Represents a single days worth of weather forecast
  */
-@Entity
+@Entity(tableName = "dailyForecast", primaryKeys = ["forecasted_time"])
 data class DailyForecast(
-    @PrimaryKey var id: Int,
-    @ColumnInfo(name="forecasted_time") var date: String?,
+    @ColumnInfo(name="forecasted_time") var date: Long,
     @ColumnInfo(name ="sunrise_time") var sunriseTime: Long?,
     @ColumnInfo(name="sunset_time") var sunsetTime: Long?,
     @ColumnInfo(name="moon_phase") var moonPhase: Float?,
@@ -28,3 +27,5 @@ data class DailyForecast(
     @ColumnInfo(name="weather_type") var weatherType: String?,
     @ColumnInfo(name="weather_description") var weatherDescription: String?
 )
+
+
