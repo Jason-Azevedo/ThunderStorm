@@ -10,7 +10,7 @@ import com.jasonazevedo.thunderstorm.model.HourlyForecast
 @Dao
 interface HourlyForecastDAO {
     @Query("SELECT * FROM hourlyForecast WHERE forecasted_time = :hour LIMIT 1")
-    suspend fun getByHour(hour: Long): HourlyForecast
+    suspend fun getByHour(hour: Long): HourlyForecast?
 
     @Insert
     suspend fun insert(vararg hourForecast: HourlyForecast)

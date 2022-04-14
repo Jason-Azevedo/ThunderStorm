@@ -10,7 +10,7 @@ import com.jasonazevedo.thunderstorm.model.DailyForecast
 @Dao
 interface DailyForecastDAO {
     @Query("SELECT * FROM dailyForecast WHERE forecasted_time = :date LIMIT 1")
-    suspend fun getByDate(date: Long): DailyForecast
+    suspend fun getByDate(date: Long): DailyForecast?
 
     @Insert
     suspend fun insert(vararg dailyForecast: DailyForecast)

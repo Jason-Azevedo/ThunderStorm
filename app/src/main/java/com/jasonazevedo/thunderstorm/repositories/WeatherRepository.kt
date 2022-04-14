@@ -9,10 +9,12 @@ import com.jasonazevedo.thunderstorm.model.DailyForecast
 import com.jasonazevedo.thunderstorm.model.HourlyForecast
 import com.jasonazevedo.thunderstorm.services.WeatherService
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 
 class WeatherRepository(db: AppDatabase) {
-    val hourlyDao = db.hourlyForecastDao()
-    val dailyDao = db.dailyForecastDao()
+    private val hourlyDao = db.hourlyForecastDao()
+    private val dailyDao = db.dailyForecastDao()
 
     suspend fun refreshRepository(service: WeatherService) {
 
@@ -38,7 +40,20 @@ class WeatherRepository(db: AppDatabase) {
         TODO("Not yet implemented")
     }
 
-    suspend fun getForecastedHour(): HourlyForecast? {
-        TODO("Not yet implemented")
+    /**
+     * Gets the weather forecast for the date time hour provided
+     * @param dateTime - The LocalDateTime of the hour forecast you want,
+     * not affected by minutes,seconds,nanoseconds.
+     */
+    suspend fun getForecastedHour(dateTime: LocalDateTime): HourlyForecast? {
+        // Remove any minutes, seconds, nanoseconds
+        var trimmedDateTime = dateTime.minusMinutes(dateTime.minute.toLong())
+        trimmedDateTime = trimmedDateTime.minusSeconds(dateTime.second.toLong())
+        trimmedDateTime = trimmedDateTime.minusNanos(dateTime.nano.toLong())
+
+        val epochTime = trimmedDateTime.toEpochSecond(ZoneOffset.UTC)
+        val forecast = hourlyDao.getByHour(epochTime)
+
+        return forecast
     }
 }
